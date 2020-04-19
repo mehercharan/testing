@@ -49,6 +49,13 @@ dag = DAG(
     dagrun_timeout=timedelta(minutes=60)
 )
 
+task_with_failed_slack_alerts = BashOperator(
+    task_id='fail_task',
+    bash_command='exit 1',
+    on_failure_callback=task_fail_slack_alert,
+    provide_context=True,
+    dag=dag)
+
 #dummy_task = DummyOperator(task_id='dummy_task',dag=dag,retries=3)
 
 
