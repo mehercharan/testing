@@ -33,7 +33,6 @@ def task_fail_slack_alert(context):
     return failed_alert.execute(context=context)
 
 
-SLACK_CONN_ID = 'slack_id'
 
 args = {
     'owner': 'airflow',
